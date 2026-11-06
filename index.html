@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>BaseTao spreadsheet : repérer, comparer et choisir avec méthode</title>
+<meta name="description" content="Un guide BaseTao spreadsheet en français : catégories mode, tailles, photos QC et budget complet. Des repères concrets pour comparer avant de choisir.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#253e47">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="BaseTao spreadsheet — Le carnet de repérage">
+<meta property="og:description" content="Parcourir les catégories, comprendre une fiche et construire une sélection mieux documentée.">
+<meta name="twitter:card" content="summary">
+<!--
+Fichier : index.html.
+Ajouter une URL canonique absolue une fois le domaine de publication connu.
+
+Recherche préparatoire : requête « BaseTao spreadsheet », dix résultats web examinés.
+Le classement de la première page de Google n'a pas pu être certifié.
+Sources :
+basetaoglobal.com : extrait consulté, ouverture échouée ;
+linktr.ee/basetao ;
+basetaoship.com : extrait consulté, ouverture échouée ;
+basetaosale.com : extrait consulté, ouverture échouée ;
+basetaotrade.com ;
+basetao-spreadsheet.org/about ;
+basetaoimport.com ;
+spreadsheet-basetao.com ;
+basetao-spreadsheet.org ;
+basetao.tattoo.
+
+Thèmes observés : catégories, liens produits, tableaux comparatifs,
+photos QC, tailles et budget de livraison.
+Aucun chiffre promotionnel de ces sources repris.
+
+Mot-clé principal : BaseTao spreadsheet.
+Secondaires :
+- guide BaseTao en français ;
+- tableau de comparaison mode ;
+- photos QC BaseTao ;
+- sélection de vêtements BaseTao.
+
+24 intentions de longue traîne intégrées au contenu :
+comprendre un BaseTao spreadsheet ; organiser ses liens produits ;
+comparer deux fiches de sneakers ; choisir une pointure à partir des mesures ;
+vérifier la longueur de semelle intérieure ; comparer les matières d'un sweat ;
+mesurer la largeur de poitrine ; choisir une coupe de t-shirt ;
+vérifier les dimensions d'une veste ; comparer pantalon et short ;
+mesurer le tour de tête ; vérifier les tailles d'un ensemble ;
+choisir des sous-vêtements selon les mesures ;
+comparer les détails d'un maillot ;
+vérifier les dimensions d'un accessoire ;
+lire des photos QC avant achat ;
+distinguer photo catalogue et photo réelle ;
+préparer une demande de photos détaillées ;
+calculer un budget total avant commande ;
+séparer prix produit et frais de livraison ;
+comparer des montants dans la même devise ;
+repérer un lien produit devenu indisponible ;
+tenir une liste de favoris datée ;
+éviter les doublons dans son tableau.
+-->
+<link rel="preconnect" href="https://static.nike.com" crossorigin>
+<style>
+:root {
+  --paper: #f7f4ed;
+  --ink: #20363d;
+  --muted: #53656b;
+  --line: #cbd0c9;
+  --accent: #bcf068;
+  --serif: Georgia, "Times New Roman", serif;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 16px/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+a { color: inherit; text-underline-offset: 4px; }
+a:focus-visible, summary:focus-visible {
+  outline: 3px solid #446d00;
+  outline-offset: 5px;
+}
+img { display: block; width: 100%; height: auto; }
+h1, h2, h3, p, figure { margin: 0; }
+h1, h2, h3 { line-height: 1.12; text-wrap: balance; }
+h1, h2 { font-family: var(--serif); font-weight: 400; }
+h1 {
+  font-size: clamp(3rem, 6.7vw, 6.4rem);
+  letter-spacing: -.055em;
+}
+h2 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  letter-spacing: -.035em;
+}
+h3 { font-size: 1.18rem; }
+p + p { margin-top: 1rem; }
+.wrap { width: min(1180px, 92%); margin-inline: auto; }
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 23px 0;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  font-weight: 800;
+  letter-spacing: -.04em;
+  font-size: 1.3rem;
+  text-decoration: none;
+}
+.brand span { font-weight: 400; }
+.top small { color: var(--muted); }
+.pill {
+  display: inline-block;
+  border: 1px solid var(--ink);
+  border-radius: 30px;
+  padding: 8px 18px;
+  text-decoration: none;
+  font-size: .85rem;
+  font-weight: 700;
+}
+.eyebrow {
+  font-size: .74rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  font-weight: 750;
+}
+.categories { padding: 25px 0 30px; }
+.categories header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 14px;
+}
+.categories p { font-size: .83rem; color: var(--muted); }
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+.category-grid a {
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 14px 12px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  background: #ffffff50;
+}
+.category-grid a:hover { background: var(--accent); }
+.category-grid strong { font-size: .94rem; }
+.category-grid span { font-size: .74rem; color: var(--muted); }
+.hero {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 5%;
+  padding: 30px 0 60px;
+  align-items: center;
+}
+.hero .eyebrow { margin-bottom: 23px; }
+.hero h1 em { font-style: italic; }
+.intro {
+  max-width: 510px;
+  color: var(--muted);
+  margin-top: 25px;
+  font-size: 1.08rem;
+}
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: var(--ink);
+  color: white;
+  text-decoration: none;
+  border-radius: 3px;
+  padding: 15px 22px;
+  margin-top: 24px;
+  font-weight: 650;
+}
+.cta:hover { background: #36545d; }
+.hero-visual {
+  background: #e8eae5;
+  position: relative;
+  padding: 15px;
+  transform: rotate(2deg);
+}
+.hero-visual img {
+  aspect-ratio: 1;
+  object-fit: contain;
+  background: #f5f5f5;
+}
+.hero-visual figcaption {
+  font-size: .78rem;
+  padding: 14px 4px 1px;
+  color: var(--muted);
+}
+.label {
+  position: absolute;
+  left: -18px;
+  top: 22px;
+  background: var(--accent);
+  padding: 9px 16px;
+  font-size: .75rem;
+  font-weight: 750;
+  transform: rotate(-5deg);
+}
+.answer {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 35px;
+  background: var(--ink);
+  color: white;
+  padding: 35px;
+  margin-bottom: 65px;
+}
+.answer h2 { font-size: 2rem; }
+.answer p { color: #e3ebe9; }
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 28px;
+  align-items: end;
+  margin-bottom: 28px;
+}
+.section-head p { max-width: 370px; color: var(--muted); }
+.section-head .eyebrow { margin-bottom: 14px; }
+.journal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-bottom: 65px;
+}
+.article {
+  border: 1px solid var(--line);
+  padding: 30px;
+  background: #ffffff45;
+}
+.article .number {
+  color: #607765;
+  font-size: .8rem;
+  letter-spacing: .08em;
+  display: block;
+  margin-bottom: 22px;
+}
+.article h3 {
+  font-family: var(--serif);
+  font-size: 1.7rem;
+  font-weight: 400;
+  margin-bottom: 17px;
+}
+.article p { color: var(--muted); }
+.split {
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  gap: 45px;
+  align-items: start;
+  margin-bottom: 65px;
+}
+.scarf { background: white; padding: 20px; border: 1px solid var(--line); }
+.scarf img { aspect-ratio: 2/1; object-fit: contain; }
+.scarf figcaption { font-size: .83rem; color: var(--muted); margin-top: 15px; }
+.checks h2 { margin-bottom: 25px; }
+.check {
+  display: grid;
+  grid-template-columns: 35px 1fr;
+  gap: 12px;
+  border-top: 1px solid var(--line);
+  padding: 17px 0;
+}
+.check b { font-size: .8rem; color: var(--muted); }
+.check p { font-size: .95rem; color: var(--muted); margin-top: 7px; }
+.table-box {
+  overflow-x: auto;
+  margin: 25px 0 12px;
+  border: 1px solid var(--line);
+  background: #ffffff60;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 570px;
+  text-align: left;
+  font-size: .91rem;
+}
+caption { text-align: left; font-weight: 700; padding: 18px; }
+th, td { border-top: 1px solid var(--line); padding: 15px; vertical-align: top; }
+thead { background: #e9eddf; }
+th { font-weight: 650; }
+.note { font-size: .83rem; color: var(--muted); }
+.budget { padding: 35px; border: 1px solid var(--ink); margin-bottom: 65px; }
+.formula {
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 3vw, 2.1rem);
+  line-height: 1.4;
+  margin: 25px 0;
+  padding: 20px;
+  background: #e7eddd;
+}
+.faq {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 45px;
+  padding: 45px 0;
+  border-top: 1px solid var(--line);
+}
+.faq h2 { margin-top: 15px; }
+details { border-bottom: 1px solid var(--line); padding: 19px 0; }
+summary { font-weight: 650; cursor: pointer; line-height: 1.5; }
+details p { margin-top: 13px; color: var(--muted); }
+.end {
+  background: var(--accent);
+  padding: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  margin: 25px 0 45px;
+}
+.end h2 { font-size: 2.1rem; }
+.end .cta { margin: 0; white-space: nowrap; }
+footer {
+  border-top: 1px solid var(--line);
+  padding: 25px 0 35px;
+  color: var(--muted);
+  font-size: .8rem;
+}
+footer p { max-width: 900px; }
+footer .brand { display: inline-block; color: var(--ink); margin-bottom: 10px; }
+@media (max-width: 800px) {
+  .category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero { grid-template-columns: 1fr; gap: 38px; padding-top: 15px; }
+  .hero-visual { max-width: 520px; margin-inline: 12px; transform: none; }
+  .hero-visual img { aspect-ratio: 1.2; }
+  .answer, .split, .faq { grid-template-columns: 1fr; gap: 25px; }
+  .journal { grid-template-columns: 1fr; }
+  .section-head { display: block; }
+  .section-head p { margin-top: 15px; }
+  .end { display: block; }
+  .end .cta { margin-top: 22px; }
+  .top small { display: none; }
+}
+@media (max-width: 460px) {
+  .top { gap: 12px; }
+  .brand { font-size: 1.1rem; }
+  .pill { padding: 7px 11px; font-size: .75rem; }
+  .categories header { display: block; }
+  .categories p { margin-top: 5px; }
+  .article, .budget, .answer, .end { padding: 24px; }
+  .category-grid a { padding: 12px 9px; }
+  .category-grid strong { font-size: .85rem; }
+  .hero h1 { font-size: 3.3rem; }
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "#page",
+      "name": "BaseTao spreadsheet : repérer, comparer et choisir avec méthode",
+      "inLanguage": "fr",
+      "description": "Un carnet de repérage en français pour comparer des fiches mode, lire les photos et préparer son budget.",
+      "mainEntity": {"@id": "#questions"}
+    },
+    {
+      "@type": "Article",
+      "headline": "Une sélection de vêtements BaseTao, documentée étape par étape",
+      "inLanguage": "fr",
+      "isPartOf": {"@id": "#page"},
+      "description": "Organiser les liens, comparer les mesures, examiner les photos et distinguer les composantes du budget."
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "#questions",
+      "inLanguage": "fr",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Comment comprendre un BaseTao spreadsheet ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "C’est un tableau de repérage qui regroupe des liens et des informations à comparer. Il aide à organiser une recherche ; il ne garantit ni le stock, ni la qualité, ni l’authenticité d’un article."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cette page propose-t-elle un fichier à télécharger ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Non. Cette page propose un guide et des accès aux catégories de Cafans. Elle ne fournit pas de fichier Excel, de feuille Google Sheets ou de commande BaseTao intégrée."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment lire des photos QC avant achat ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Vérifiez que les photos correspondent à la référence, à la couleur et à la taille choisies. Examinez les coutures, les dimensions et les détails visibles. Une photo QC ne prouve pas à elle seule l’authenticité."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment calculer un budget total avant commande ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Additionnez le prix des articles et les frais applicables : livraison locale, service, options, transport international et éventuelles taxes à destination. Utilisez des montants confirmés et la même devise pour comparer."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Les visuels prouvent-ils la disponibilité sur Cafans ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Non. Les images Nike et Gucci sont des références visuelles éditoriales. Elles ne constituent pas une offre de vente et ne prouvent pas la présence de ces références dans le catalogue Cafans."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ce guide est-il affilié à BaseTao ou aux marques citées ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Non. Ce guide est indépendant et oriente ses liens de consultation vers Cafans. Aucune affiliation officielle avec BaseTao, Nike, Louis Vuitton, Gucci, Hermès ou Dior n’est revendiquée."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="canonical" href="https://kakobuyfinds.github.io/zqrmn/">
+</head>
+<body>
+<header class="wrap top">
+  <a class="brand" href="https://www.cafans.com">LE CARNET <span>/ BaseTao</span></a>
+  <small>Mode · mesures · méthode</small>
+  <a class="pill" href="https://www.cafans.com">Découvrir Cafans ↗</a>
+</header>
+
+<main class="wrap">
+  <nav class="categories" aria-label="Catégories du catalogue Cafans">
+    <header>
+      <h2 class="eyebrow">Commencer par une catégorie</h2>
+      <p>Les catégories ouvrent le catalogue Cafans.</p>
+    </header>
+    <div class="category-grid">
+      <a href="https://cafans.com/category-911-Shoes.html">
+        <strong>Chaussures ↗</strong><span lang="en">Shoes</span>
+      </a>
+      <a href="https://cafans.com/category-912-Hoodies%2FSweaters.html">
+        <strong>Sweats et pulls ↗</strong><span lang="en">Hoodies/Sweaters</span>
+      </a>
+      <a href="https://cafans.com/category-913-T-Shirts.html">
+        <strong>T-shirts ↗</strong><span lang="en">T-Shirts</span>
+      </a>
+      <a href="https://cafans.com/category-914-Jackets.html">
+        <strong>Vestes ↗</strong><span lang="en">Jackets</span>
+      </a>
+      <a href="https://cafans.com/category-915-Pants%2FShorts.html">
+        <strong>Pantalons et shorts ↗</strong><span lang="en">Pants/Shorts</span>
+      </a>
+      <a href="https://cafans.com/category-916-Headwear.html">
+        <strong>Couvre-chefs ↗</strong><span lang="en">Headwear</span>
+      </a>
+      <a href="https://cafans.com/category-917-Sets.html">
+        <strong>Ensembles ↗</strong><span lang="en">Sets</span>
+      </a>
+      <a href="https://cafans.com/category-918-underwear%2Funderpants.html">
+        <strong>Sous-vêtements ↗</strong><span lang="en">Underwear/underpants</span>
+      </a>
+      <a href="https://cafans.com/category-919-Jersey.html">
+        <strong>Maillots ↗</strong><span lang="en">Jersey</span>
+      </a>
+      <a href="https://cafans.com/category-920-Accessories.html">
+        <strong>Accessoires ↗</strong><span lang="en">Accessories</span>
+      </a>
+    </div>
+  </nav>
+
+  <section class="hero" aria-labelledby="titre">
+    <div>
+      <p class="eyebrow">Le guide BaseTao en français</p>
+      <h1 id="titre">BaseTao spreadsheet.<br><em>Le bon choix se prépare.</em></h1>
+      <p class="intro">Une belle image donne une idée. Des mesures, une référence et des informations vérifiables permettent de la préciser. Voici un carnet pour passer du repérage à une comparaison utile.</p>
+      <a class="cta" href="https://www.cafans.com">
+        Explorer le catalogue Cafans <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+    <figure class="hero-visual">
+      <span class="label">REPÈRE VISUEL / 01</span>
+      <img
+        src="https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto%2Cu_9ddf04c7-2a9a-4d76-add1-d15af8f0263d%2Cc_scale%2Cfl_relative%2Cw_1.0%2Ch_1.0%2Cfl_layer_apply/b7d9211c-26e7-431a-ac24-b0540fb3c00f/AIR%2BFORCE%2B1%2B%2707.png"
+        width="535"
+        height="535"
+        alt="Nike Air Force 1 ’07 blanche, référence visuelle de chaussure basse"
+        fetchpriority="high"
+        loading="eager"
+        decoding="async">
+      <figcaption>Nike Air Force 1 ’07 · Visuel de référence, sans indication de stock sur Cafans.</figcaption>
+    </figure>
+  </section>
+
+  <section class="answer" aria-labelledby="definition">
+    <h2 id="definition">À quoi sert ce carnet ?</h2>
+    <p>Un <strong>BaseTao spreadsheet</strong> sert à rassembler des liens produits et des critères de comparaison dans un tableau. Ce guide explique comment structurer cette recherche. Les liens de cette page mènent à Cafans ; aucun tableau téléchargeable ni service de commande BaseTao n’est intégré.</p>
+  </section>
+
+  <section aria-labelledby="articles">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Dossier pratique / quatre lectures</p>
+        <h2 id="articles">Moins d’hésitation.<br>Plus de repères.</h2>
+      </div>
+      <p>Une sélection de vêtements BaseTao devient plus facile à relire quand chaque observation reste attachée à sa source.</p>
+    </div>
+
+    <div class="journal">
+      <article class="article">
+        <span class="number">01 / ORGANISER</span>
+        <h3>Transformer des onglets en tableau de comparaison mode</h3>
+        <p>Pour organiser ses liens produits, commencez par une ligne par référence et par variante. Notez la catégorie, l’adresse de la fiche, la couleur, la taille et la date de consultation.</p>
+        <p>Tenir une liste de favoris datée permet de distinguer un ancien repérage d’une fiche récemment consultée. Pour éviter les doublons dans son tableau, comparez l’adresse d’origine et la variante avant d’ajouter une ligne.</p>
+        <p>Repérer un lien produit devenu indisponible ne signifie pas retrouver automatiquement le même article ailleurs : toute nouvelle fiche demande une nouvelle vérification.</p>
+      </article>
+
+      <article class="article">
+        <span class="number">02 / MESURER</span>
+        <h3>La taille indiquée n’est que le début</h3>
+        <p>Pour comparer deux fiches de sneakers, rapprochez les références, les variantes et les guides de tailles. Choisir une pointure à partir des mesures est plus utile que supposer une équivalence entre toutes les marques.</p>
+        <p>Vérifier la longueur de semelle intérieure exige une mesure clairement définie : ne la confondez pas avec la longueur extérieure. Pour un haut, mesurer la largeur de poitrine sur un vêtement qui vous va donne un point de comparaison concret.</p>
+        <p>Choisir une coupe de t-shirt demande aussi de regarder les épaules et la longueur. Vérifier les dimensions d’une veste aide à prévoir la place nécessaire pour une couche supplémentaire.</p>
+      </article>
+
+      <article class="article">
+        <span class="number">03 / OBSERVER</span>
+        <h3>Photos QC BaseTao : regarder ce qui est documenté</h3>
+        <p>Distinguer photo catalogue et photo réelle évite de prendre une mise en scène pour l’état d’un exemplaire précis. Une image de présentation montre un style ; une photo liée à votre commande doit correspondre à la variante sélectionnée.</p>
+        <p>Pour préparer une demande de photos détaillées, nommez le point à examiner : couture, étiquette, fermeture, dessous de semelle ou mesure au ruban. Une demande précise est plus exploitable qu’une demande générale de « meilleure qualité ».</p>
+        <p>Comparer les matières d’un sweat suppose de lire sa composition et sa description : le toucher, l’épaisseur et l’authenticité ne se déduisent pas d’une photographie seule.</p>
+      </article>
+
+      <article class="article">
+        <span class="number">04 / COORDONNER</span>
+        <h3>Construire un ensemble sans perdre les détails</h3>
+        <p>Pour comparer pantalon et short, relevez la taille, la fourche et la longueur. Vérifier les tailles d’un ensemble implique de contrôler séparément le haut et le bas, même s’ils partagent une seule étiquette.</p>
+        <p>Mesurer le tour de tête aide à examiner une casquette ou un chapeau. Pour choisir des sous-vêtements selon les mesures, consultez aussi la matière, l’élasticité annoncée et les conditions de retour applicables.</p>
+        <p>Comparer les détails d’un maillot demande une attention aux impressions, à la coupe et aux finitions. Vérifier les dimensions d’un accessoire reste essentiel : une photo rapprochée peut donner une fausse impression d’échelle.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="split" aria-labelledby="visuel">
+    <figure class="scarf">
+      <img
+        src="https://media.gucci.com/style/DarkGray_Center_0_0_490x245/1774635320/A00097_3G001_4078_015_100_0000_Light-your-majesty-printed-silk-carre.jpg"
+        width="490"
+        height="245"
+        alt="Carré en soie Gucci Your Majesty à motif imprimé multicolore"
+        loading="lazy"
+        decoding="async">
+      <figcaption>Gucci « Your Majesty » · Inspiration visuelle pour examiner motifs, proportions et finitions. Ce visuel n’est pas une offre commerciale.</figcaption>
+    </figure>
+    <div class="checks">
+      <p class="eyebrow">Image, référence, preuve</p>
+      <h2 id="visuel">Un motif attire.<br>Un détail renseigne.</h2>
+
+      <div class="check">
+        <b>01</b>
+        <div>
+          <h3>Identifier la référence</h3>
+          <p>Relevez le nom, la variante et les dimensions annoncées. Un nom de marque seul ne suffit pas à identifier un article.</p>
+        </div>
+      </div>
+
+      <div class="check">
+        <b>02</b>
+        <div>
+          <h3>Comparer des vues équivalentes</h3>
+          <p>Même angle, éclairage comparable et gros plans pertinents : cette méthode réduit les confusions de couleur ou de proportion.</p>
+        </div>
+      </div>
+
+      <div class="check">
+        <b>03</b>
+        <div>
+          <h3>Garder les limites de l’image</h3>
+          <p>Pour Nike, Louis Vuitton, Gucci, Hermès ou Dior, la présence d’un logo ne constitue pas une preuve d’authenticité. Vérifiez la provenance et les justificatifs disponibles.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="budget" aria-labelledby="budget">
+    <p class="eyebrow">Le budget, sans raccourci</p>
+    <h2 id="budget">Comparer le total,<br>pas seulement l’étiquette.</h2>
+    <p style="margin-top:20px">Séparer prix produit et frais de livraison permet de voir ce qui est réellement connu. Pour comparer des montants dans la même devise, notez le taux utilisé, sa date et les éventuels frais de conversion.</p>
+
+    <p class="formula">Articles + frais applicables + transport + charges à destination = budget à vérifier</p>
+
+    <div class="table-box">
+      <table>
+        <caption>Les champs utiles d’une fiche de comparaison</caption>
+        <thead>
+          <tr>
+            <th scope="col">Champ</th>
+            <th scope="col">À noter</th>
+            <th scope="col">Si l’information manque</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Article</th>
+            <td>Référence, variante, quantité et prix affiché</td>
+            <td>À confirmer sur la fiche</td>
+          </tr>
+          <tr>
+            <th scope="row">Mesures</th>
+            <td>Unité, méthode et guide de tailles</td>
+            <td>Demander une mesure précise</td>
+          </tr>
+          <tr>
+            <th scope="row">Images</th>
+            <td>Catalogue ou exemplaire concerné</td>
+            <td>Origine non confirmée</td>
+          </tr>
+          <tr>
+            <th scope="row">Services et transport</th>
+            <td>Devis, options, destination et date</td>
+            <td>Ne pas inscrire zéro par défaut</td>
+          </tr>
+          <tr>
+            <th scope="row">Taxes éventuelles</th>
+            <td>Montant confirmé pour la destination</td>
+            <td>À vérifier avant paiement</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Cette méthode ne fournit ni devis de livraison ni estimation fiscale. Les frais dépendent de la commande et de la destination.</p>
+  </section>
+
+  <section class="faq" aria-labelledby="faq">
+    <div>
+      <p class="eyebrow">Réponses directes</p>
+      <h2 id="faq">Avant de<br>vous décider.</h2>
+      <p style="margin-top:20px;color:var(--muted)">Des réponses courtes pour comprendre le guide et ses limites.</p>
+    </div>
+    <div>
+      <details open>
+        <summary>Comment comprendre un BaseTao spreadsheet ?</summary>
+        <p>C’est un tableau de repérage qui regroupe des liens et des informations à comparer. Il aide à organiser une recherche ; il ne garantit ni le stock, ni la qualité, ni l’authenticité d’un article.</p>
+      </details>
+      <details>
+        <summary>Cette page propose-t-elle un fichier à télécharger ?</summary>
+        <p>Non. Cette page propose un guide et des accès aux catégories de Cafans. Elle ne fournit pas de fichier Excel, de feuille Google Sheets ou de commande BaseTao intégrée.</p>
+      </details>
+      <details>
+        <summary>Comment lire des photos QC avant achat ?</summary>
+        <p>Vérifiez que les photos correspondent à la référence, à la couleur et à la taille choisies. Examinez les coutures, les dimensions et les détails visibles. Une photo QC ne prouve pas à elle seule l’authenticité.</p>
+      </details>
+      <details>
+        <summary>Comment calculer un budget total avant commande ?</summary>
+        <p>Additionnez le prix des articles et les frais applicables : livraison locale, service, options, transport international et éventuelles taxes à destination. Utilisez des montants confirmés et la même devise pour comparer.</p>
+      </details>
+      <details>
+        <summary>Les visuels prouvent-ils la disponibilité sur Cafans ?</summary>
+        <p>Non. Les images Nike et Gucci sont des références visuelles éditoriales. Elles ne constituent pas une offre de vente et ne prouvent pas la présence de ces références dans le catalogue Cafans.</p>
+      </details>
+      <details>
+        <summary>Ce guide est-il affilié à BaseTao ou aux marques citées ?</summary>
+        <p>Non. Ce guide est indépendant et oriente ses liens de consultation vers Cafans. Aucune affiliation officielle avec BaseTao, Nike, Louis Vuitton, Gucci, Hermès ou Dior n’est revendiquée.</p>
+      </details>
+    </div>
+  </section>
+
+  <aside class="end">
+    <div>
+      <p class="eyebrow">Votre prochaine étape</p>
+      <h2>Repérer une pièce.<br>Puis vérifier sa fiche.</h2>
+    </div>
+    <a class="cta" href="https://www.cafans.com">Consulter Cafans ↗</a>
+  </aside>
+</main>
+
+<footer class="wrap">
+  <a class="brand" href="https://www.cafans.com">LE CARNET / BaseTao</a>
+  <p>Guide indépendant en français. Les noms de marques servent à identifier les références illustrées et restent la propriété de leurs titulaires. Les images externes peuvent varier selon leur disponibilité. Aucun prix, avis client, stock ou partenariat officiel n’est affirmé sur cette page.</p>
+</footer>
+</body>
+</html>
